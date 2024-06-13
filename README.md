@@ -14,7 +14,7 @@ How to run the programm
 2) Compile
 3) Deploy
 
-Contract
+# Contract
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.18;
@@ -59,6 +59,70 @@ contract MyToken {
     }
 }
 ```
+# Cotract Details
+# Public Variables
 
-# 
+  string public TokenName = "Ramit Chaturvedi";<br>
+  name of the token.<br>
+  string public TokenAbr = "Ra_Ch";<br>
+  The abbreviation of the token.<br>
+  uint public TokenSupply = 0;<br>
+  The total supply of tokens, initialized to zero.<br>
+
+# Balance Mapping
+mapping(address => uint) public balances;<br>
+mapping to store the balance of tokens for each address.<br>
+
+# Functions
+
+# 1. mint_Tokens
+
+This function helps us to mint new tokens.<br>
+
+# Parameters:
+
+_address: The address of the new tokens.<br>
+_value: The value of tokens to be added.<br>
+# Logic:
+
+Increases the total supply by the passed value and balance of the specified address by the passed value.<br>
+
+```
+ function mint_Tokens(address _address, uint _value) public{
+        TokenSupply += _value;
+        balances[_address] += _value;
+    }
+```
+
+# 2. burn_Tokens
+function burn the tokens.
+
+# Parameters:
+
+_address: address of token to be burned.<br>
+_value: value of token to be burned.<br>
+
+#Logic:
+
+determines whether there is enough balance at the designated address to burn the tokens.<br>
+If the condition is met, reduces the balance of the designated address by the passed value and the total supply by the passed value.<br>
+```
+ function burn_Tokens(address _address, uint _value) public{
+        if(balances[_address]>= _value){
+            TokenSupply -= _value;
+            balances[_address] -= _value;
+        }
+       
+    }
+```
+
+
+# License
+This project is licensed under the MIT License - see the LICENSE.md file for details
+
+# Authors
+Ramit Chaturvedi
+
+# Contributing
+Contributions are welcome! Feel free for any changes or improvements.
 
